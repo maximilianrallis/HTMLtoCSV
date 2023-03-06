@@ -61,7 +61,7 @@ print(count_file_path)
 
 workbook = openpyxl.Workbook()
 worksheet = workbook.active
-ILN = number[-13:] + '.xlsx'
+ILN = int(number[-13:])
 Instanz = [18] * countNumber
 fuerInstanz = [6] * countNumber
 Zielzeitreihe = ['Normallastprofil.Markt'] * countNumber
@@ -74,9 +74,9 @@ table_data = {'Instanz': Instanz,
 
 # create a pandas DataFrame from the list
 df = pd.DataFrame(table_data)
-
+Spath = r"C:\Users\WF6444\ExportCSVFiles\HierCSV" + ILN + '.xlsx'
 # create a writer object to save the file
-writer = pd.ExcelWriter(ILN)
+writer = pd.ExcelWriter(Spath)
 
 # write the DataFrame to the Excel file
 df.to_excel(writer, index=False)
